@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
+
+/* ضبط قياسات الورق الافتراضية */
+@page {
+  size: A5 landscape;
+  margin: 8mm 10mm;
+}
+
+@page a4 {
+  size: A4 portrait;
+  margin: 10mm 12mm;
+}
+
+.sheet-a4 {
+  page: a4;
+}
+
+/* التنسيق الأساسي */
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  color: #0f172a;
+  font-family: 'Cairo', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 10pt;
+  line-height: 1.4;
+  direction: rtl;
+  -webkit-font-smoothing: antialiased;
+}
+
+.sheet {
+  width: 100%;
+  direction: rtl;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* ترويسة المؤسسة والوثيقة */
+.company-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2.5px solid #0f172a;
+  padding-bottom: 3mm;
+  margin-bottom: 4mm;
+}
+
+.company-title {
+  font-size: 13pt;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.company-sub {
+  font-size: 8.5pt;
+  color: #475569;
+  margin-top: 1mm;
+}
+
+.doc-title {
+  font-size: 16pt;
+  font-weight: 900;
+  text-align: center;
+  letter-spacing: 0.5px;
+  color: #0f172a;
+}
+
+.doc-title-en {
+  font-size: 8pt;
+  text-align: center;
+  color: #64748b;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.doc-serial-box {
+  border: 2px solid #0f172a;
+  border-radius: 4px;
+  padding: 2mm 4mm;
+  font-weight: 700;
+  text-align: center;
+  font-size: 10pt;
+  background-color: #f8fafc;
+}
+
+/* شبكة بيانات السند (Key-Value) */
+.kv {
+  display: grid;
+  grid-template-columns: 38mm 1fr;
+  row-gap: 3mm;
+  font-size: 10.5pt;
+  margin-top: 3mm;
+}
+
+.kv b {
+  font-weight: 700;
+  color: #334155;
+}
+
+.amount-box {
+  display: inline-block;
+  border: 2px solid #0f172a;
+  border-radius: 4px;
+  padding: 1.5mm 5mm;
+  font-weight: 900;
+  direction: ltr;
+  text-align: center;
+  min-width: 48mm;
+  font-size: 12pt;
+  background: #f1f5f9;
+  font-family: monospace, sans-serif;
+}
+
+/* صندوق التفقيط */
+.tafqeet {
+  border: 1.5px dashed #475569;
+  border-radius: 4px;
+  padding: 2.5mm 4mm;
+  margin-block: 3.5mm;
+  font-weight: 700;
+  font-size: 10pt;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+/* العلامة المائية للسندات الملغاة */
+.void-watermark {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-22deg);
+  font-size: 58pt;
+  font-weight: 900;
+  color: rgba(225, 29, 72, 0.22);
+  border: 5px dashed rgba(225, 29, 72, 0.35);
+  border-radius: 12px;
+  padding: 4mm 18mm;
+  text-align: center;
+  pointer-events: none;
+  z-index: 50;
+  user-select: none;
+}
+
+/* التواقيع والاعتمادات */
+.signatures {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8mm;
+  margin-top: 10mm;
+}
+
+.signatures > div {
+  border-top: 1.5px solid #0f172a;
+  padding-top: 2mm;
+  text-align: center;
+  font-size: 9.5pt;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+/* جداول كشف الحساب */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 4mm;
+  font-size: 9.5pt;
+}
+
+th, td {
+  border: 1px solid #334155;
+  padding: 2mm 2.5mm;
+}
+
+th {
+  background: #e2e8f0;
+  font-weight: 800;
+  color: #0f172a;
+  text-align: center;
+}
+
+td.num {
+  direction: ltr;
+  text-align: end;
+  font-family: monospace, sans-serif;
+  font-size: 9pt;
+}
+
+thead {
+  display: table-header-group;
+}
+
+tr, .signatures {
+  break-inside: avoid;
+}
+
+/* شريط التحكم بالطباعة على الشاشة */
+.action-bar {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}
+
+.btn-print {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 10pt;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+
+.btn-print:hover {
+  background: #1d4ed8;
+}
+
+/* قواعد وسائط الطباعة */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: transparent !important;
+    padding: 0 !important;
+  }
+  .sheet {
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+  }
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+/* مظهر المعاينة داخل المتصفح (Screen Mode) */
+@media screen {
+  body {
+    background: #cbd5e1;
+    padding: 20px 10px;
+    display: flex;
+    justify-content: center;
+  }
+  .sheet {
+    background: #fff;
+    max-width: 210mm;
+    min-height: 140mm;
+    margin: 0 auto;
+    padding: 10mm 12mm;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+  }
+  .sheet-a4 {
+    min-height: 285mm;
+  }
+}

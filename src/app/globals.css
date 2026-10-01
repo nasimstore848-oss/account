@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: var(--font-cairo), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-mono: var(--font-mono), monospace;
+  }
+
+  body {
+    font-family: var(--font-sans);
+  }
+
+  /* فرض محاذاة الأرقام الحسابية المتساوية العرض لمنع اهتزاز الأسطر */
+  .font-mono, td.num, input[type="number"] {
+    font-family: var(--font-mono) !important;
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+}
+
+@theme {
+  --font-sans: var(--font-cairo), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-mono), monospace;
+}
+
+@layer utilities {
+  /* تدرج السطح الفضي البلاتيني المصقول */
+  .surface-silver-gloss {
+    background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 60%, #e2e8f0 100%);
+    border: 1px solid rgba(203, 213, 225, 0.85);
+    box-shadow: 
+      inset 0 1px 1px 0 rgba(255, 255, 255, 0.95),
+      0 4px 16px -2px rgba(15, 23, 42, 0.04);
+  }
+
+  /* التدرج الأزرق الملكي المصقول للأزرار والترويسات */
+  .surface-blue-gloss {
+    background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 55%, #38bdf8 100%);
+    border: 1px solid rgba(147, 197, 253, 0.35);
+    box-shadow: 
+      inset 0 1px 2px 0 rgba(255, 255, 255, 0.45),
+      0 8px 24px -4px rgba(29, 78, 216, 0.3);
+  }
+
+  /* إطار فضي بلمعان كرومي عند التمرير */
+  .silver-card-interactive {
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .silver-card-interactive:hover {
+    transform: translateY(-2px);
+    border-color: #93c5fd;
+    box-shadow: 
+      0 12px 30px -6px rgba(30, 58, 138, 0.1),
+      inset 0 1px 2px 0 rgba(255, 255, 255, 1);
+  }
+
+  /* خط انعكاس الضوء الفضي على الأزرار */
+  .gloss-sheen-overlay {
+    position: relative;
+    overflow: hidden;
+  }
+  .gloss-sheen-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: skewX(-20deg);
+    transition: 0.75s;
+    pointer-events: none;
+  }
+  .gloss-sheen-overlay:hover::before {
+    left: 150%;
+  }
+
+  /* تدرج فضي معدني مصقول مع حواف براقة */
+  .silver-metallic-surface {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #ffffff 100%);
+    border: 1px solid rgba(203, 213, 225, 0.8);
+    box-shadow: 
+      inset 0 1px 1px 0 rgba(255, 255, 255, 0.9),
+      0 4px 14px -2px rgba(15, 23, 42, 0.05);
+  }
+
+  /* تدرج أزرق ملكي لامع بلمسة كهربائية */
+  .glossy-blue-surface {
+    background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #38bdf8 100%);
+    box-shadow: 
+      inset 0 1px 2px 0 rgba(255, 255, 255, 0.4),
+      0 8px 20px -4px rgba(37, 99, 235, 0.35);
+  }
+
+  /* إطار فضي بلمعان معدني للبطاقات */
+  .silver-border-glow {
+    position: relative;
+    border: 1px solid #cbd5e1;
+    box-shadow: 
+      0 0 0 1px rgba(255, 255, 255, 0.6),
+      0 10px 25px -5px rgba(30, 58, 138, 0.08);
+  }
+
+  /* تأثير انعكاس الضوء على الزوايا */
+  .reflection-highlight {
+    background: linear-gradient(
+      180deg, 
+      rgba(255, 255, 255, 0.7) 0%, 
+      rgba(255, 255, 255, 0.05) 60%, 
+      transparent 100%
+    );
+  }
+}
